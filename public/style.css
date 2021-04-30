@@ -1,8 +1,14 @@
 
 #canvas_wrapper {
     position: relative;
-    margin: 10px;
+    margin: auto;
+    max-width: 1000px;
     width: auto;
+}
+
+#canvas_wrapper::before{
+    content: "";
+    display: block;
     padding-top: 56.25%;
 }
 
@@ -17,10 +23,12 @@
 #array_view {
     top: 0;
     left: 0;
-    background-color: lightgray;
-    position: absolute;
+    bottom: 0;
+    right: 0;
     width: 100%;
     height: 100%;
+    background-color: lightgray;
+    position: absolute;
 }
 
 .sort {
