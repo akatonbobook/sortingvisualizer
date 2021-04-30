@@ -81,15 +81,19 @@ function onShuffle(){
 }
 
 async function bubbleSort(arr){
-    var n = arr.length;
-    for(var i = 0; i < n-1; i++){
-        for(var j = n-1; j>i; j--){
-            if(!sorting) return;
-            if(arr[j-1]>arr[j]){
-                await swap(arr, j-1, arr, j);
+    try{
+        var n = arr.length;
+        for(var i = 0; i < n-1; i++){
+            for(var j = n-1; j>i; j--){
+                if(!sorting) throw new Error();
+                if(arr[j-1]>arr[j]){
+                    await swap(arr, j-1, arr, j);
+                }
             }
         }
     }
+    catch(e){ }
+
     var btn = document.getElementById("bubble");
     btn.value = "BubbleSort";
     var btns = document.getElementsByTagName('input');
@@ -102,7 +106,7 @@ async function bubbleSort(arr){
 }
 
 async function mergeSort(arr, l, r){
-    if(!sorting) return;
+    if(!sorting) throw new Error();
     var n = r-l;
     if(n <= 1) return;
     var m = Math.floor((l+r)/2);
@@ -112,7 +116,7 @@ async function mergeSort(arr, l, r){
 }
 
 async function merge(arr, l, m, r){
-    if(!sorting) return;
+    if(!sorting) throw new Error();
     var lp = 0;
     var rp = 0;
     var L = arr.slice(l, m);
@@ -120,7 +124,7 @@ async function merge(arr, l, m, r){
     console.log([l, m, r, L, R]);
     
     for(var i = l; i < r; i++){
-        if(!sorting) return;
+        if(!sorting) throw new Error();
         if(lp > L.length - 1){
             await swap(arr, i, R, rp);
             rp++;
@@ -141,7 +145,10 @@ async function merge(arr, l, m, r){
 }
 
 async function onMergeSort(){
-    await mergeSort(array, 0, array.length);
+    try{
+        await mergeSort(array, 0, array.length);
+    }
+    catch(e){}
     
     var btn = document.getElementById("merge");
     btn.value = "MergeSort";
@@ -155,7 +162,7 @@ async function onMergeSort(){
 }
 
 async function insert(arr, i){
-    if(!sorting) return;
+    if(!sorting) throw new Error();
     var p = Math.floor((i - 1)/2);
     if(i == 0) return;
     else if(arr[p] >= arr[i]) return;
@@ -174,7 +181,7 @@ async function deleteMax(arr, n){
     else c = 2*p+2;
 
     while(c < n && arr[c] > arr[p]){
-        if (!sorting) return;
+        if(!sorting) throw new Error();
         await swap(arr, p, arr, c);
         p = c;
         if (2*p+1 > n-1) c = n;
@@ -185,16 +192,19 @@ async function deleteMax(arr, n){
 }
 
 async function heapSort(arr){
-    for(var i = 0; i < arr.length; i++){
-        if(!sorting) return;
-        await insert(arr, i);
+    try{
+        for(var i = 0; i < arr.length; i++){
+            if(!sorting) throw new Error();
+            await insert(arr, i);
+        }
+    
+        for(var i = arr.length - 1; i > 0; i--){
+            if(!sorting) throw new Error();
+            await swap(arr, 0, arr, i);
+            await deleteMax(arr, i);
+        }
     }
-
-    for(var i = arr.length - 1; i > 0; i--){
-        if(!sorting) return;
-        await swap(arr, 0, arr, i);
-        await deleteMax(arr, i);
-    }
+    catch(e){ }
 
     var btn = document.getElementById("heap");
     btn.value = "HeapSort";
@@ -210,7 +220,7 @@ async function heapSort(arr){
 function verifySorted(arr, i, j){
     if(j-i+1<2) return true;
     for(var k = i; k <= j; k++){
-        if(!sorting) return false;
+        if(!sorting) throw new Error();
         if(arr[i] != arr[k]) return false;
     }
     return true;
@@ -219,7 +229,7 @@ function verifySorted(arr, i, j){
 function pivot(arr, i, j){
     var l = i + 1;
     while(l < j && arr[l] == arr[i]){
-        if(!sorting) return arr[i];
+        if(!sorting) throw new Error();
         l++;
     }
     if(arr[l] > arr[i]) return arr[l];
@@ -230,7 +240,7 @@ async function partition(arr, p, i, j){
     var l = i;
     var r = j;
     while(l <= r){
-        if(!sorting) return r;
+        if(!sorting) throw new Error();
         while(arr[l] < p) l++;
         while(arr[r] >= p) r--;
         if(l <= r){
@@ -253,7 +263,10 @@ async function quickSort(arr, i, j){
 }
 
 async function onQuickSort(){
-    await quickSort(array, 0, array.length - 1);
+    try{
+        await quickSort(array, 0, array.length - 1);
+    }
+    catch(e){ }
 
     var btn = document.getElementById("quick");
     btn.value = "QuickSort";
