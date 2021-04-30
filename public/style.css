@@ -1,8 +1,17 @@
 
 #canvas_wrapper {
     position: relative;
-    width: 80vw;
+    margin: 10px;
+    width: auto;
     padding-top: 56.25%;
+}
+
+.container {
+    display: contents;
+    position: relative;
+    width: fit-content;
+    margin: 10px;
+    text-align: center;
 }
 
 #array_view {
@@ -18,7 +27,7 @@
     width: 100px;
 }
 
-.content {
+#content {
     margin-right: auto;
     margin-left: auto;
     text-align: center;

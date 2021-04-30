@@ -271,6 +271,10 @@ function init(){
     c = document.getElementById("array_view");
     onShuffle();
 
+    document.getElementById("num").addEventListener('input', e => {
+        onShuffle();
+    });
+
     var sortbtns = document.getElementsByClassName("sort");
 
     for(var i = 0; i < sortbtns.length; i++){
