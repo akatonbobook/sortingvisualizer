@@ -1,0 +1,29 @@
+
+#canvas_wrapper {
+    position: relative;
+    width: 80vw;
+    padding-top: 56.25%;
+}
+
+#array_view {
+    top: 0;
+    left: 0;
+    background-color: lightgray;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.sort {
+    width: 100px;
+}
+
+.content {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+p {
+    margin: 5px;
+}

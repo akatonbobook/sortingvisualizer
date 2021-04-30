@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="public/style.css">
+    <script src="public/program.js"></script>
+    <title>ソートアルゴリズム</title>
+</head>
+<body>
+    <div id="content">
+        <div id="canvas_wrapper">
+            <canvas id="array_view"></canvas>
+        </div>
+        <div>
+            <input type="button" id="shuffle" onclick="onShuffle()" value="shuffle"/>
+            <input id="num" type="number" min="1" value="25">
+            <p>計算量 <span id="cal">0</span></p>
+        </div>
+        <div>
+            <input type="button" id="bubble" class="sort" value="BubbleSort"/>
+            <input type="button" id="merge" class="sort" value="MergeSort"/>
+            <input type="button" id="heap" class="sort" value="HeapSort"/>
+            <input type="button" id="quick" class="sort" value="QuickSort"/>
+            
+        </div>
+    </div>
+</body>
+</html>
